@@ -10,7 +10,7 @@
 
 	'如果 post来请求  status为1 则返回200条user表里的数据的 api
 	if Cint(Status) = 1 then
-		Res.Open "SELECT   TOP (200) Phone, Number, Name, Sex, Department, IDCard, JoinDate, Birthday FROM P_User", Conn
+		Res.Open "SELECT   TOP (200) Phone, Number, Name, Sex, Department, IDCard, JoinDate, Birthday FROM User", Conn
 		count = 1
 		RequireJsonStr = "{""code"":0,""data"":{"
 		do while not (Res.Bof or Res.Eof)
@@ -25,10 +25,10 @@
 		set Res = Nothing
 	end if
 
-	'根据Number 值在P_User里查找 工号对应的
+	'根据Number 值在User里查找 工号对应的
 	if Cint(Status) = 2 then
 		Value = request.form("Value")
-		Res.Open "SELECT Phone, Number, Name, Sex, Department, IDCard, JoinDate, Birthday FROM P_User WHERE ( Number like '%"& Value &"%')", Conn
+		Res.Open "SELECT Phone, Number, Name, Sex, Department, IDCard, JoinDate, Birthday FROM User WHERE ( Number like '%"& Value &"%')", Conn
 		if not (Res.Eof or Res.Bof) then
 
 			count = 1
@@ -49,10 +49,10 @@
 		set Res = Nothing
 	end if
 
-	'输入汉字 在P_User 进行 模糊搜索 名字相关的
+	'输入汉字 在User 进行 模糊搜索 名字相关的
 	if Cint(Status) = 3 then
 		Value = request.form("Value")
-		Res.Open "SELECT Phone, Number, Name, Sex, Department, IDCard, JoinDate, Birthday FROM P_User WHERE ( Name like '%"& Value &"%')", Conn
+		Res.Open "SELECT Phone, Number, Name, Sex, Department, IDCard, JoinDate, Birthday FROM User WHERE ( Name like '%"& Value &"%')", Conn
 		if not( Res.Eof or Res.Bof) then
 
 			count = 1
@@ -72,10 +72,10 @@
 		set Res = Nothing
 	end if
 
-	'向P_UserEducationBackground添加数据
+	'向UserEducationBackground添加数据
 	if Cint(Status) = 4 then
 		Value = request.form("Value")
-		Res.Open "SELECT Number, StartTime, EndTime, Description FROM P_UserEducationBackground WHERE ( Number = '"& Value &"')", Conn
+		Res.Open "SELECT Number, StartTime, EndTime, Description FROM UserEducationBackground WHERE ( Number = '"& Value &"')", Conn
 		if not( Res.Eof or Res.Bof) then
 			count = 1
 			RequireJsonStr = "{""code"":0,""data"":{ "

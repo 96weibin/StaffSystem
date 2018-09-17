@@ -16,7 +16,7 @@
 
 	' response.write(response.contentType)
 
-	Res.open "SELECT * from P_UserAdmin where (UserName = '" & UserName & "')and (PassWord = '"&PassWord&"')",Conn
+	Res.open "SELECT * from UserAdmin where (UserName = '" & UserName & "')and (PassWord = '"&PassWord&"')",Conn
 
 	' response.write(Res)
 	if not (Res.eof and Res.bof) then 

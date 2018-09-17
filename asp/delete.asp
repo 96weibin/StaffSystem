@@ -6,8 +6,8 @@
 	Number = request.form("Number")
 
 
-	Conn.execute "delete from P_User where Number = '"&Number&"'"
-	Conn.execute "delete from P_UserEducationBackground where Number = '"&Number&"'"
+	Conn.execute "delete from User where Number = '"&Number&"'"
+	Conn.execute "delete from UserEducationBackground where Number = '"&Number&"'"
 	response.write("{""code"":0,""msg"":""删除成功！""}")
 
 	Conn.close
