@@ -19,15 +19,15 @@
 
 	
 
-	Res.Open "Select Number From P_User Where Number = '"& Number &"'",Conn,3,1
-	' Res.Open "Select Number From P_User Where Number = '182720'",Conn,3,1
+	Res.Open "Select Number From User Where Number = '"& Number &"'",Conn,3,1
+	' Res.Open "Select Number From User Where Number = '182720'",Conn,3,1
 
 	' Response.Write(Res.RecordCount)
 
 	if Res.RecordCount > 0 then
 		Response.Write("{""code"":1,""msg"":""the Number "&Number&"have been repeat "&Res.RecordCount&" times"",""times"":"&Res.RecordCount&",""Number"":"""&Number&"""}")
 	else
-		Conn.Execute "Insert Into P_User (Phone, Number, Name, Sex, Department, IDCard, JoinDate, Birthday) Values ('"&Phone&"','"&Number&"','"&Name&"','"&Sex&"','"&Department&"','"&IDCard&"','"&JoinDate&"','"&Birthday&"')"
+		Conn.Execute "Insert Into User (Phone, Number, Name, Sex, Department, IDCard, JoinDate, Birthday) Values ('"&Phone&"','"&Number&"','"&Name&"','"&Sex&"','"&Department&"','"&IDCard&"','"&JoinDate&"','"&Birthday&"')"
 	' Response.Write(Conn.errors.count)
 		
 

@@ -230,7 +230,7 @@ window.onload = function () {
 				UserName: loginUsernameInput.value,
 				PassWord: loginPasswordInput.value
 			}
-			myAjax.post('http://127.0.0.1/staff/asp/adminLogin.asp',obj,function(err, res){
+			myAjax.post('http://172.17.147.2/staff/asp/adminLogin.asp',obj,function(err, res){
 				if(err){
 					console.log(err)
 				} else {
@@ -356,7 +356,7 @@ window.onload = function () {
 		if( dataTest()){
 			// console.log(sendJsonBase)
 			//所有base数据验证成功到达这里  post提交
-			myAjax.post("http://127.0.0.1/staff/asp/addBaseInfo.asp",sendJsonBase,function (err, res) {
+			myAjax.post("http://172.17.147.2/staff/asp/addBaseInfo.asp",sendJsonBase,function (err, res) {
 				if(err){
 					console.log(err)
 				}else{
@@ -377,7 +377,7 @@ window.onload = function () {
 							sendJsonExperience.EndTime = endDate[i].value;
 							sendJsonExperience.Number = sendJsonBase.Number;
 							console.log(sendJsonExperience);
-							myAjax.post("http://127.0.0.1/staff/asp/addExperienceInfo.asp",sendJsonExperience,function (err, res) {
+							myAjax.post("http://172.17.147.2/staff/asp/addExperienceInfo.asp",sendJsonExperience,function (err, res) {
 								if(err) {
 									console.log(err);
 								} else{
@@ -413,7 +413,7 @@ window.onload = function () {
 
 		viewInfoModal.style.display = "block";
 		sessionStorage.showStatus = 2;
-		myAjax.post("http://127.0.0.1/staff/asp/search.asp",{"Status":1},function (err,res) {
+		myAjax.post("http://172.17.147.2/staff/asp/search.asp",{"Status":1},function (err,res) {
 			if (err) {
 				console.log(err);
 			} else {
@@ -441,7 +441,7 @@ window.onload = function () {
 	**/
 	function upData() {
 		if (dataTest()) {
-			myAjax.post("http://127.0.0.1/staff/asp/delete.asp",{Number: sendJsonBase.Number},function(err, res){
+			myAjax.post("http://172.17.147.2/staff/asp/delete.asp",{Number: sendJsonBase.Number},function(err, res){
 				if(err) {
 					console.log(err)
 				}else{
@@ -637,7 +637,7 @@ window.onload = function () {
 			var detailInfoBox = document.getElementsByClassName("detailInfoBox");
 			if(isNaN(searchInput.value)){
 				// console.log("不能转为数字")
-				myAjax.post("http://127.0.0.1/staff/asp/search.asp",{"Status":"3","Value":searchInput.value}, function(err,res){
+				myAjax.post("http://172.17.147.2/staff/asp/search.asp",{"Status":"3","Value":searchInput.value}, function(err,res){
 					if(err){
 						console.log(err);
 					}else{
@@ -657,7 +657,7 @@ window.onload = function () {
 				})
 			} else {
 				// console.log("能")
-				myAjax.post("http://127.0.0.1/staff/asp/search.asp",{"Status":"2","Value":searchInput.value}, function(err,res){
+				myAjax.post("http://172.17.147.2/staff/asp/search.asp",{"Status":"2","Value":searchInput.value}, function(err,res){
 					if(err){
 						console.log(err);
 					}else{
@@ -708,7 +708,7 @@ window.onload = function () {
 					detailInfoBox[i].previousSibling.children[2].children[0].setAttribute("disabled","disabled");
 					detailInfoBox[i].previousSibling.children[1].children[0].setAttribute("disabled","disabled");
 					detailInfoBox[i].previousSibling.children[5].setAttribute("data-flag",0);
-					detailInfoBox[i].previousSibling.children[5].style.backgroundImage = "url(http://127.0.0.1/staff/img/pen.png)";
+					detailInfoBox[i].previousSibling.children[5].style.backgroundImage = "url(http://172.17.147.2/staff/img/pen.png)";
 
 					if(event.target.parentNode.nextSibling === detailInfoBox[i]){
 						// console.log("自己个")
@@ -728,7 +728,7 @@ window.onload = function () {
 				// console.log(index);
 
 				// console.log(event.target.parentNode.children[0].children[0].value)
-				myAjax.post("http://127.0.0.1/staff/asp/search.asp",{"Status": 4, "value":event.target.parentNode.children[0].children[0].value},function(err,res) {
+				myAjax.post("http://172.17.147.2/staff/asp/search.asp",{"Status": 4, "value":event.target.parentNode.children[0].children[0].value},function(err,res) {
 					if(err) {
 						console.log(err);
 					}else{
@@ -791,7 +791,7 @@ window.onload = function () {
 			var num = this.parentNode.children[0].children[0].value;
 
 			if(window.confirm(`确定要删除${num}此条信息？`)){
-				myAjax.post("http://127.0.0.1/staff/asp/delete.asp",{Number : this.parentNode.children[0].children[0].value},function (err, res) {
+				myAjax.post("http://172.17.147.2/staff/asp/delete.asp",{Number : this.parentNode.children[0].children[0].value},function (err, res) {
 					if(err) {
 						console.log(err);
 					} else {
@@ -841,7 +841,7 @@ window.onload = function () {
 					
 
 
-					oDetailInfoBox[i].previousSibling.children[5].style.backgroundImage = "url(http://127.0.0.1/staff/img/pen.png)";
+					oDetailInfoBox[i].previousSibling.children[5].style.backgroundImage = "url(http://172.17.147.2/staff/img/pen.png)";
 					oDetailInfoBox[i].previousSibling.children[5].setAttribute("data-flag",0);
 				}
 
@@ -858,13 +858,13 @@ window.onload = function () {
 
 
 
-				this.style.backgroundImage="url(http://127.0.0.1/staff/img/right.png)"
+				this.style.backgroundImage="url(http://172.17.147.2/staff/img/right.png)"
 
 				
 				var index = event.target.parentNode.dataset.index;
 				// console.log(index);
 				// console.log(event.target.parentNode.children[0].children[0].value)
-				myAjax.post("http://127.0.0.1/staff/asp/search.asp",{"Status": 4, "value":event.target.parentNode.children[0].children[0].value},function(err,res) {
+				myAjax.post("http://172.17.147.2/staff/asp/search.asp",{"Status": 4, "value":event.target.parentNode.children[0].children[0].value},function(err,res) {
 					if(err) {
 						console.log(err);
 					}else{
@@ -1229,19 +1229,19 @@ window.onload = function () {
 					console.log("有更改"+msg)
 
 					if(confirm(msg)){
-						myAjax.post("http://127.0.0.1/staff/asp/delete.asp",{"Number":oNumber},function(err, res) {
+						myAjax.post("http://172.17.147.2/staff/asp/delete.asp",{"Number":oNumber},function(err, res) {
 							if(err){
 								console.log(err)
 							}else {
 								console.log(sendJsonBase);
 								console.log(sendJsonExperience);
 								if(JSON.parse(res).code === 0) {
-									myAjax.post("http://127.0.0.1/staff/asp/addBaseInfo.asp",sendJsonBase,function (err, res) {
+									myAjax.post("http://172.17.147.2/staff/asp/addBaseInfo.asp",sendJsonBase,function (err, res) {
 										if(err){
 											console.log(err)
 										}else {
 											for (var i = 0, count = sendJsonExperience.count; i < count; i ++) {
-												myAjax.post("http://127.0.0.1/staff/asp/addExperienceInfo.asp",sendJsonExperience[i],function (err, res) {
+												myAjax.post("http://172.17.147.2/staff/asp/addExperienceInfo.asp",sendJsonExperience[i],function (err, res) {
 													if(err){
 														console.log(err);
 														return
@@ -1253,7 +1253,7 @@ window.onload = function () {
 									},false);
 									event.target.setAttribute("data-flag",0);
 									// event.target.style.transform = "rotate(0deg)";
-									event.target.style.backgroundImage = "url(http://127.0.0.1/staff/img/pen.png)"
+									event.target.style.backgroundImage = "url(http://172.17.147.2/staff/img/pen.png)"
 									// event.target.parentNode.children[0].children[0].setAttribute("disabled","disabled");
 									event.target.parentNode.children[1].children[0].setAttribute("disabled","disabled");
 									event.target.parentNode.children[2].children[0].setAttribute("disabled","disabled");
@@ -1271,7 +1271,7 @@ window.onload = function () {
 					console.log("没更改"+msg)
 					event.target.setAttribute("data-flag",0);
 					// event.target.style.transform = "rotate(0deg)";
-					event.target.style.backgroundImage = "url(http://127.0.0.1/staff/img/pen.png)";
+					event.target.style.backgroundImage = "url(http://172.17.147.2/staff/img/pen.png)";
 					// event.target.parentNode.children[0].children[0].setAttribute("disabled","disabled");
 					event.target.parentNode.children[1].children[0].setAttribute("disabled","disabled");
 					event.target.parentNode.children[2].children[0].setAttribute("disabled","disabled");
