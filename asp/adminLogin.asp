@@ -6,8 +6,10 @@
 	' response.write(Conn.state)
 	'获取账号密码'
 	dim UserName, PassWord, msg
-	UserName = request.form("UserName")
-	PassWord = request.form("PassWord")
+	' UserName = request.form("UserName")
+	' PassWord = request.form("PassWord")
+	UserName = "admin"
+	password = "admin"
 	' msg = "你最帅"
 	' response.write("{ ""用户名"" : """ & UserName  & """,  ""密码"":""" & PassWord &  """}")
 	' response.write(response.contentType)
