@@ -13,8 +13,8 @@
 	' msg = "你最帅"
 	' response.write("{ ""用户名"" : """ & UserName  & """,  ""密码"":""" & PassWord &  """}")
 	' response.write(response.contentType)
-	Res.open "SELECT * from Staff_User where (UserName = '" & UserName & "')and (PassWord = '"&PassWord&"')",Conn
-	' response.write(Res)
+	Res.open "SELECT * from Staff_User where (UserName = '" & UserName & "') and (PassWord = '"&PassWord&"')",Conn
+	response.write(Res.state)
 	if not (Res.eof and Res.bof) then 
 		response.write("{ ""code"" : 0,  ""msg"":""账号密码匹配成功"",""data"":{""UserName"":"" "&UserName&"  ""}}")
 	else
