@@ -1,1 +1,73 @@
-"use strict";!function(){var u=window.myAjax={};u.queryJsonToQueryString=function(e){var t=[];for(var n in e)t.push(n+"="+encodeURIComponent(e[n]));return t.join("&")},u.get=function(e,t,n){if(window.XMLHttpRequest)var o=new XMLHttpRequest;else o=new ActiveXObject("Microsoft.XMLHTTP");o.onreadystatechange=function(){o.readyState===o.DONE&&(200<=o.status&&o.status<300||304===o.status?n&&n(null,o.responseText):n&&n(new Error("没有找到文件"),void 0))};var s=u.queryJsonToQueryString(t);console.log("GET 请求:"+e+"?"+s),o.open("GET",e+"?"+s,!0),o.send(null)},u.post=function(e,t,n,o){if(window.XMLHttpRequest)var s=new XMLHttpRequest;else s=new ActiveXObject("Microsoft.XMLHTTP");s.onreadystatechange=function(){s.readyState===s.DONE&&(200<=s.status&&s.status<300||304===s.status?n&&n(null,s.responseText):n&&n({errorCode:s.status,msg:"post 请求失败"}))},null==o&&(o=!0),s.open("POST",e,o);var r=u.queryJsonToQueryString(t);console.log("Post请求body:"+r),s.setRequestHeader("Content-Type","application/x-www-form-urlencoded"),s.send(r)}}();
+"use strict";
+
+(function () {
+  var myAjax = window.myAjax = {};
+
+  myAjax.queryJsonToQueryString = function (json) {
+    var arr = [];
+
+    for (var k in json) {
+      arr.push(k + '=' + encodeURIComponent(json[k]));
+    }
+
+    return arr.join('&');
+  };
+
+  myAjax.get = function (url, queryJson, callback) {
+    if (window.XMLHttpRequest) {
+      var xhr = new XMLHttpRequest();
+    } else {
+      var xhr = new ActiveXObject('Microsoft.XMLHTTP');
+    }
+
+    xhr.onreadystatechange = function () {
+      // console.log(xhr.DONE);
+      if (xhr.readyState === xhr.DONE) {
+        if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
+          callback && callback(null, xhr.responseText);
+        } else {
+          callback && callback(new Error("没有找到文件"), undefined);
+        }
+      }
+    };
+
+    var queryString = myAjax.queryJsonToQueryString(queryJson);
+    console.log('GET 请求:' + url + '?' + queryString);
+    xhr.open('GET', url + '?' + queryString, true);
+    xhr.send(null);
+  };
+
+  myAjax.post = function (url, queryJson, callback, async) {
+    if (window.XMLHttpRequest) {
+      var xhr = new XMLHttpRequest();
+    } else {
+      var xhr = new ActiveXObject('Microsoft.XMLHTTP');
+    }
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === xhr.DONE) {
+        if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
+          // console.log(xhr.responseText)
+          callback && callback(null, xhr.responseText);
+        } else {
+          callback && callback({
+            errorCode: xhr.status,
+            msg: "post 请求失败"
+          });
+        }
+      }
+    };
+
+    if (async == undefined) {
+      async = true;
+    } // console.log(async)
+    // console.log(url)
+
+
+    xhr.open('POST', url, async);
+    var queryString = myAjax.queryJsonToQueryString(queryJson);
+    console.log('Post请求body:' + queryString);
+    xhr.setRequestHeader('Content-Type', "application/x-www-form-urlencoded");
+    xhr.send(queryString);
+  };
+})();

@@ -1,5 +1,6 @@
 window.onload = function () {
 	init();
+	//世界真美好
 	var loginUsernameInput = document.getElementsByClassName('adminName')[0];
 	var loginPasswordInput = document.getElementsByClassName('adminPass')[0];
 	var loginButton = document.getElementsByClassName('adminLogin')[0];

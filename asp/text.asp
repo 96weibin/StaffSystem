@@ -1,3 +1,5 @@
+<%@ language="vbscript" codepage="65001"%>
+
 <%
-response.write("接受到"request.queryString("UserName"))
+response.write("hello world")
 %>
