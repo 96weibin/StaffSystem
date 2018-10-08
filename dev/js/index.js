@@ -128,8 +128,8 @@ window.onload = function () {
 				<div class="lookInfoBtn">查看信息</div>
 				<div class="adminLoginBox">
 					<div class="userSwitch">管理员登录</div>
-					<input type="text" name="username" placeholder="请输入账号" class="adminName">
-					<input type="password" name="password" placeholder="请输入密码" class="adminPass">
+					<input type="text" name="username" placeholder="请输入账号 admin" class="adminName">
+					<input type="password" name="password" placeholder="请输入密码 admin" class="adminPass">
 					<input type="button" value="管理员登录" class="adminLogin">
 				</div>
 				<div class="addStaffModal">
