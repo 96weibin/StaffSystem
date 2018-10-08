@@ -107,6 +107,7 @@ window.onload = function () {
 		footer.innerHTML = "查看信息"
 		viewInfomation();
 	}
+	
 	/*Login
 	* 判断登录信息是否齐全，  齐全调用 myAjax  post 方法，将用户名，密码发送到  asp文件  
 	* 解码返回的json判断返回的API的信息  让登录框消失，新增，查找框居中,更改页面上的一些信息
